@@ -1,0 +1,69 @@
+{{define "artiste"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sade</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { display: flex; gap: 20px; align-items: center; margin-bottom: 1.5rem; }
+        .header img { max-height: 200px; border-radius: 4px; }
+        .section { margin-bottom: 1rem; }
+        .label { font-weight: bold; }
+        .tag { display: inline-block; background: #f0f0f0; padding: 4px 8px; margin: 2px; border-radius: 12px; }
+        a { color: #1DB954; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    {{/* On mémorise le nom pour l'utiliser dans l'attribut alt */}}
+    {{$name := .Name}}
+    <div class="header">
+        {{if gt (len .Images) 0}}
+            {{with index .Images 0}}
+                <img src="{{.URL}}" alt="{{$name}}">
+            {{end}}
+        {{end}}
+        <div>
+            <h1>{{.Name}}</h1>
+            <div class="section">
+                <span class="label">Popularité :</span> {{.Popularity}} / 100
+            </div>
+            <div class="section">
+                <span class="label">Type :</span> {{.Type}}
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <span class="label">Genres :</span>
+        {{if .Genres}}
+            {{range .Genres}}
+                <span class="tag">{{.}}</span>
+            {{end}}
+        {{else}}
+            <span>Aucun genre disponible</span>
+        {{end}}
+    </div>
+
+    <div class="section">
+        <span class="label">ID Spotify :</span> {{.ID}}
+    </div>
+
+    <div class="section">
+        <span class="label">Lien API Spotify :</span>
+        <a href="{{.Href}}" target="_blank" rel="noopener noreferrer">{{.Href}}</a>
+    </div>
+
+    <div class="section">
+        <span class="label">Explorer :</span>
+        <!-- Page des albums de Sade -->
+        <a href="/albums">Voir tous les albums</a>
+        &nbsp;|&nbsp;
+        <!-- Meilleurs titres, on passe l'ID de l'artiste en query param -->
+        <a href="/best_track?id={{.ID}}">Voir les meilleurs titres</a>
+    </div>
+</body>
+</html>
+{{end}}

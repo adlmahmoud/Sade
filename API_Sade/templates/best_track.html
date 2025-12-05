@@ -1,0 +1,77 @@
+{{define "best_track"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meilleurs titres</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { margin-bottom: 1rem; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
+        th { background-color: #f2f2f2; }
+        img { max-height: 80px; }
+        .artists span { display: block; }
+        audio { width: 160px; }
+    </style>
+</head>
+<body>
+    <h1>Meilleurs titres</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Pochette</th>
+                <th>Titre</th>
+                <th>Artistes</th>
+                <th>Album</th>
+                <th>Durée (ms)</th>
+                <th>Popularité</th>
+                <th>Preview</th>
+                <th>Spotify</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .Tracks}}
+            {{/* On mémorise le nom de l'album pour l'utiliser dans l'alt */}}
+            {{$albumName := .Album.Name}}
+            <tr>
+                <td>
+                    {{if gt (len .Album.Images) 0}}
+                        {{with index .Album.Images 0}}
+                            <img src="{{.URL}}" alt="{{$albumName}}">
+                        {{end}}
+                    {{end}}
+                </td>
+                <td>{{.Name}}</td>
+                <td class="artists">
+                    {{range .Artists}}
+                        <span>{{.Name}}</span>
+                    {{end}}
+                </td>
+                <td>{{.Album.Name}}</td>
+                <td>{{.DurationMs}}</td>
+                <td>{{.Popularity}}</td>
+                <td>
+                    {{if .PreviewURL}}
+                        <audio controls src="{{.PreviewURL}}"></audio>
+                    {{else}}
+                        Pas de preview disponible
+                    {{end}}
+                </td>
+                <td>
+                    <a href="https://open.spotify.com/track/{{.ID}}" target="_blank" rel="noopener noreferrer">
+                        Ouvrir dans Spotify
+                    </a>
+                </td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+
+    <div class="section" style="margin-top: 1.5rem;">
+        <a href="/">&#8592; Retour à la page d'accueil</a>
+    </div>
+</body>
+</html>
+{{end}}

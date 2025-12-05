@@ -1,0 +1,65 @@
+{{define "albums"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albums de Sade</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { margin-bottom: 0.5rem; }
+        .meta { margin-bottom: 1.5rem; color: #555; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        img { max-height: 80px; }
+    </style>
+</head>
+<body>
+    <h1>Albums de Sade</h1>
+    <p class="meta">
+        Total albums : {{.Total}} &mdash; Limite : {{.Limit}} &mdash; Offset : {{.Offset}}
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>Pochette</th>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Nombre de pistes</th>
+                <th>Date de sortie</th>
+                <th>Lien Spotify</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .Items}}
+            {{/* On mémorise le nom de l'album pour l'utiliser dans l'alt */}}
+            {{$name := .Name}}
+            <tr>
+                <td>
+                    {{if gt (len .Images) 0}}
+                        {{with index .Images 0}}
+                            <img src="{{.URL}}" alt="{{$name}} cover">
+                        {{end}}
+                    {{end}}
+                </td>
+                <td>{{.Name}}</td>
+                <td>{{.AlbumType}}</td>
+                <td>{{.TotalTracks}}</td>
+                <td>{{.ReleaseDate}}</td>
+                <td>
+                    <a href="{{.Href}}" target="_blank" rel="noopener noreferrer">
+                        Ouvrir dans Spotify
+                    </a>
+                </td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+
+    <div class="section" style="margin-top: 1.5rem;">
+        <a href="/">&#8592; Retour à la page d'accueil</a>
+    </div>
+</body>
+</html>
+{{end}}

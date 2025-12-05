@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "dfc4ba1b-fc2a-4b4e-aa2c-d3134c274fc7",
+		"name": "Sade",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48738157",
+		"_collection_link": "https://mahmoud-adel-1001e2ba-8086806.postman.co/workspace/mahmoud-adel-1001e2ba's-Workspa~00a7943b-a7ab-4c70-8c19-82832d5240de/collection/48738157-dfc4ba1b-fc2a-4b4e-aa2c-d3134c274fc7?action=share&source=collection_link&creator=48738157"
+	},
+	"item": [
+		{
+			"name": "Sade",
+			"item": [
+				{
+					"name": "artiste",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer BQBfLsw9Cs2NinVmpkbY7macrr5srbipYqVsH89p9eE_wFvJ4t1VkVgJB9Qu8Lc5khwrgnbtdbv-k8rpe8mTztmlYvJou1KxTpufehhPDcBEGafRqFvBEBOicVYms12bRLkGuPG7KTc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.spotify.com/v1/artists/47zz7sob9NUcODy0BTDvKx",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"artists",
+								"47zz7sob9NUcODy0BTDvKx"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Albums",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer BQBfLsw9Cs2NinVmpkbY7macrr5srbipYqVsH89p9eE_wFvJ4t1VkVgJB9Qu8Lc5khwrgnbtdbv-k8rpe8mTztmlYvJou1KxTpufehhPDcBEGafRqFvBEBOicVYms12bRLkGuPG7KTc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.spotify.com/v1/artists/47zz7sob9NUcODy0BTDvKx/albums",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"artists",
+								"47zz7sob9NUcODy0BTDvKx",
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Best track",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer BQBfLsw9Cs2NinVmpkbY7macrr5srbipYqVsH89p9eE_wFvJ4t1VkVgJB9Qu8Lc5khwrgnbtdbv-k8rpe8mTztmlYvJou1KxTpufehhPDcBEGafRqFvBEBOicVYms12bRLkGuPG7KTc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.spotify.com/v1/artists/47zz7sob9NUcODy0BTDvKx/top-tracks",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"artists",
+								"47zz7sob9NUcODy0BTDvKx",
+								"top-tracks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

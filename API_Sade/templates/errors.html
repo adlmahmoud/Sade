@@ -1,0 +1,42 @@
+{{define "error"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page erreur</title>
+    <link rel="stylesheet" href="/static/css/global.css">
+    <link rel="stylesheet" href="/static/css/errors.css">
+</head>
+<body>
+    <div class="error-container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="/err">Error</a></li>
+                </ul>
+            </nav>
+            <div class="logo">Spotify</div>
+        </header>
+
+        <main>
+            <div class="error-code">
+                {{if .Code}}{{.Code}}{{else}}500{{end}}
+            </div>
+            <div class="error-message">
+                {{if .Message}}{{.Message}}{{else}}Une erreur serveur s'est produite{{end}}
+            </div>
+            <a href="/" class="back-link">Retour à l'accueil</a>
+        </main>
+
+        <footer>
+            <p>Exemple Spotify - Page d'erreur
+                Fait par ADEL Mahmoud(dans le cadre d'etude)
+            </p>
+        </footer>
+        
+    </div>
+</body>
+</html>
+{{end}}
