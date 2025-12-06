@@ -1,0 +1,15 @@
+.page--tracks #tracks-table img {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7);
+}
+
+.page--tracks audio {
+  width: 160px;
+}
+
+.page--tracks td.artists span {
+  font-size: 0.8rem;
+}

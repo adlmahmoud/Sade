@@ -5,20 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meilleurs titres</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1 { margin-bottom: 1rem; }
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
-        th { background-color: #f2f2f2; }
-        img { max-height: 80px; }
-        .artists span { display: block; }
-        audio { width: 160px; }
-    </style>
+    <link rel="stylesheet" href="/static/css/global.css">
+    <link rel="stylesheet" href="/static/css/best_tracks.css">
 </head>
-<body>
-    <h1>Meilleurs titres</h1>
-    <table>
+<body class="page--tracks">
+    <div class="page-shell">
+        <header class="page-header">
+            <div>
+                <div class="page-title">Meilleurs titres</div>
+                <p class="page-subtitle">Les morceaux qui capturent l'essence de Sade.</p>
+            </div>
+            <nav class="page-nav">
+                <a href="/">Artiste</a>
+                <a href="/albums">Albums</a>
+                <a href="#" class="is-primary">Meilleurs titres</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="card">
+                <div class="card-header">
+                    <div class="card-title">Titres</div>
+                </div>
+
+                <div class="table-shell" id="tracks-table">
+                    <table>
         <thead>
             <tr>
                 <th>Pochette</th>
@@ -67,11 +78,17 @@
             </tr>
             {{end}}
         </tbody>
-    </table>
+                    </table>
+                </div>
+            </section>
+        </main>
 
-    <div class="section" style="margin-top: 1.5rem;">
-        <a href="/">&#8592; Retour à la page d'accueil</a>
+        <footer style="margin-top: 18px; text-align: left;">
+            <a href="/" class="link-ghost">&#8592; Retour à l'accueil</a>
+        </footer>
     </div>
+
+    <script src="/static/js/best_tracks.js" defer></script>
 </body>
 </html>
 {{end}}

@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"os"
 	"time"
 )
 
@@ -18,9 +17,11 @@ func SearchAlbumsSrvices(id_albums_sade string) (*models.AlbumsResponse, int, er
 	if requestErr != nil {
 		fmt.Printf("Erreur initialisiation requete - %s\n", requestErr.Error())
 	}
-	// token avec la fonction os
-	token := os.Getenv("SPOTIFY_TOKEN")
-	if token != "" {
+	// Récupération automatique du token Spotify
+	token, tokenErr := GetSpotifyToken()
+	if tokenErr != nil {
+		fmt.Printf("Erreur récupération token Spotify - %s\n", tokenErr.Error())
+	} else {
 		request.Header.Set("Authorization", "Bearer "+token)
 	}
 

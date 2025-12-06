@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"os"
 	"time"
 )
 
@@ -18,8 +17,10 @@ func SearchArtisteSrvices(id string) (*models.ArtistModel, int, error) {
 	if requestErr != nil {
 		fmt.Printf("Erreur init requete - %s\n", requestErr.Error())
 	}
-	token := os.Getenv("SPOTIFY_TOKEN")
-	if token != "" {
+	token, tokenErr := GetSpotifyToken()
+	if tokenErr != nil {
+		fmt.Printf("Erreur récupération token Spotify - %s\n", tokenErr.Error())
+	} else {
 		request.Header.Set("Authorization", "Bearer "+token)
 	}
 

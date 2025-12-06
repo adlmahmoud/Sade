@@ -5,22 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Albums de Sade</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1 { margin-bottom: 0.5rem; }
-        .meta { margin-bottom: 1.5rem; color: #555; }
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        img { max-height: 80px; }
-    </style>
+    <link rel="stylesheet" href="/static/css/global.css">
+    <link rel="stylesheet" href="/static/css/albums_sade.css">
 </head>
-<body>
-    <h1>Albums de Sade</h1>
-    <p class="meta">
-        Total albums : {{.Total}} &mdash; Limite : {{.Limit}} &mdash; Offset : {{.Offset}}
-    </p>
-    <table>
+<body class="page--albums">
+    <div class="page-shell">
+        <header class="page-header">
+            <div>
+                <div class="page-title">Albums</div>
+                <p class="page-subtitle">Une discographie à explorer lentement, morceau après morceau.</p>
+            </div>
+            <nav class="page-nav">
+                <a href="/">Artiste</a>
+                <a href="/albums" class="is-primary">Albums</a>
+                <a href="/best_track?id=47zz7sob9NUcODy0BTDvKx">Meilleurs titres</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Discographie</div>
+                        <p class="meta text-muted">Total albums : {{.Total}} &mdash; Limite : {{.Limit}} &mdash; Offset : {{.Offset}}</p>
+                    </div>
+                </div>
+
+                <div class="table-shell" id="albums-table">
+                    <table>
         <thead>
             <tr>
                 <th>Pochette</th>
@@ -55,11 +67,17 @@
             </tr>
             {{end}}
         </tbody>
-    </table>
+                    </table>
+                </div>
+            </section>
+        </main>
 
-    <div class="section" style="margin-top: 1.5rem;">
-        <a href="/">&#8592; Retour à la page d'accueil</a>
+        <footer style="margin-top: 18px; text-align: left;">
+            <a href="/" class="link-ghost">&#8592; Retour à l'accueil</a>
+        </footer>
     </div>
+
+    <script src="/static/js/albums_sade.js" defer></script>
 </body>
 </html>
 {{end}}
